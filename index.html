@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>InfoRestrepo – Oportunidades para tu comunidad</title>
   <link rel="stylesheet" href="css/styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Bricolage+Grotesque:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
@@ -18,15 +18,15 @@
         <span class="logo-text">Info<strong>Restrepo</strong></span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+        <li><a href="#inicio"        class="nav-link active">Inicio</a></li>
         <li><a href="#oportunidades" class="nav-link">Oportunidades</a></li>
-        <li><a href="#categorias" class="nav-link">Categorías</a></li>
-        <li><a href="#estadisticas" class="nav-link">Estadísticas</a></li>
-        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        <li><a href="#categorias"    class="nav-link">Categorías</a></li>
+        <li><a href="#estadisticas"  class="nav-link">Estadísticas</a></li>
+        <li><a href="#contacto"      class="nav-link">Contacto</a></li>
       </ul>
       <div class="nav-actions">
-        <button class="btn-outline" onclick="openModal('loginModal')">Iniciar sesión</button>
-        <button class="btn-primary" onclick="openModal('registerModal')">Registrarse</button>
+        <button class="nav-btn-login"    onclick="openModal('loginModal')">Iniciar sesión</button>
+        <button class="nav-btn-register" onclick="openModal('registerModal')">Registrarse</button>
       </div>
       <button class="hamburger" id="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
@@ -37,43 +37,70 @@
   <!-- ========== HERO ========== -->
   <section class="hero" id="inicio">
     <div class="hero-bg-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
+      <div class="grid-lines"></div>
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
     </div>
+
     <div class="hero-content">
-      <div class="hero-badge"><i class="fas fa-map-pin"></i> Barrio Restrepo · Bogotá D.C.</div>
-      <h1 class="hero-title">Encuentra oportunidades<br/><span class="highlight">para crecer</span> en tu comunidad</h1>
-      <p class="hero-subtitle">InfoRestrepo centraliza convocatorias educativas, ofertas laborales y programas sociales para que ninguna oportunidad pase desapercibida en tu barrio.</p>
+      <div class="hero-badge">
+        <i class="fas fa-map-pin"></i> Barrio Restrepo · Bogotá D.C.
+      </div>
+      <h1 class="hero-title">
+        Encuentra oportunidades<br/>
+        <span class="highlight">para crecer</span> en tu comunidad
+      </h1>
+      <p class="hero-subtitle">
+        InfoRestrepo centraliza convocatorias educativas, ofertas laborales y programas
+        sociales para que ninguna oportunidad pase desapercibida en tu barrio.
+      </p>
       <div class="search-bar">
         <i class="fas fa-search search-icon"></i>
-        <input type="text" id="heroSearch" placeholder="Busca empleo, cursos, programas sociales..." oninput="searchOpportunities(this.value)" />
-        <button class="search-btn" onclick="searchOpportunities(document.getElementById('heroSearch').value)">Buscar</button>
+        <input type="text" id="heroSearch"
+          placeholder="Busca empleo, cursos, programas sociales..."
+          oninput="searchOpportunities(this.value)" />
+        <button class="search-btn"
+          onclick="searchOpportunities(document.getElementById('heroSearch').value)">
+          Buscar
+        </button>
       </div>
       <div class="hero-stats">
-        <div class="hstat"><strong id="totalOps">0</strong><span>Oportunidades</span></div>
+        <div class="hstat">
+          <strong id="totalOps">0</strong>
+          <span>Oportunidades</span>
+        </div>
         <div class="hstat-divider"></div>
-        <div class="hstat"><strong>4</strong><span>Categorías</span></div>
+        <div class="hstat">
+          <strong>4</strong>
+          <span>Categorías</span>
+        </div>
         <div class="hstat-divider"></div>
-        <div class="hstat"><strong>100%</strong><span>Gratuito</span></div>
+        <div class="hstat">
+          <strong>100%</strong>
+          <span>Gratuito</span>
+        </div>
       </div>
     </div>
+
     <div class="hero-image">
+      <div class="hero-globe">
+        <div class="globe-ring globe-ring-1"></div>
+        <div class="globe-ring globe-ring-2"></div>
+        <div class="globe-ring globe-ring-3"></div>
+        <div class="globe-icon"><i class="fas fa-city"></i></div>
+      </div>
       <div class="hero-card-float card-float-1">
-        <i class="fas fa-briefcase"></i>
+        <div class="float-icon float-icon-1"><i class="fas fa-briefcase"></i></div>
         <div><strong>Nueva oferta</strong><small>Operario de bodega</small></div>
       </div>
       <div class="hero-card-float card-float-2">
-        <i class="fas fa-graduation-cap"></i>
+        <div class="float-icon float-icon-2"><i class="fas fa-graduation-cap"></i></div>
         <div><strong>Curso gratis</strong><small>Excel básico SENA</small></div>
       </div>
       <div class="hero-card-float card-float-3">
-        <i class="fas fa-hands-helping"></i>
+        <div class="float-icon float-icon-3"><i class="fas fa-hands-helping"></i></div>
         <div><strong>Subsidio</strong><small>Familias en Acción</small></div>
-      </div>
-      <div class="hero-illustration">
-        <div class="ill-circle"></div>
-        <div class="ill-map"><i class="fas fa-city"></i></div>
       </div>
     </div>
   </section>
@@ -84,7 +111,7 @@
       <div class="section-header">
         <span class="section-tag">Explora por área</span>
         <h2>¿Qué estás buscando?</h2>
-        <p>Selecciona una categoría para filtrar las oportunidades disponibles</p>
+        <p>Selecciona una categoría para filtrar las oportunidades disponibles en tu comunidad</p>
       </div>
       <div class="categories-grid">
         <div class="category-card active" onclick="filterCategory('todos')" data-cat="todos">
@@ -127,10 +154,12 @@
       <div class="section-header">
         <span class="section-tag">Información actualizada</span>
         <h2>Oportunidades disponibles</h2>
-        <p>Encuentra la información que necesitas para avanzar</p>
+        <p>Encuentra la información que necesitas para avanzar en tu vida personal y profesional</p>
       </div>
       <div class="filter-bar">
-        <input type="text" id="searchInput" placeholder="Buscar oportunidades..." oninput="searchOpportunities(this.value)" />
+        <input type="text" id="searchInput"
+          placeholder="🔍  Buscar oportunidades..."
+          oninput="searchOpportunities(this.value)" />
         <select id="sortSelect" onchange="sortOpportunities(this.value)">
           <option value="reciente">Más recientes</option>
           <option value="nombre">Por nombre</option>
@@ -140,7 +169,7 @@
       <div id="noResults" class="no-results hidden">
         <i class="fas fa-search"></i>
         <p>No se encontraron oportunidades con ese criterio.</p>
-        <button onclick="resetFilters()">Ver todas</button>
+        <button onclick="resetFilters()">Ver todas las oportunidades</button>
       </div>
       <div class="opps-grid" id="oppsGrid"></div>
     </div>
@@ -155,64 +184,69 @@
         <p>Datos reales obtenidos de encuesta aplicada a 30 habitantes del barrio Restrepo, Bogotá</p>
       </div>
       <div class="stats-grid">
+
         <div class="stat-card">
-          <div class="stat-chart">
-            <div class="bar-chart">
-              <div class="bar" style="--h:57%" data-val="57%"><span>57%</span></div>
-              <div class="bar" style="--h:50%" data-val="50%"><span>50%</span></div>
-              <div class="bar" style="--h:47%" data-val="47%"><span>47%</span></div>
-              <div class="bar" style="--h:40%" data-val="40%"><span>40%</span></div>
-            </div>
+          <h3>Barreras de acceso a información</h3>
+          <div class="bar-chart">
+            <div class="bar" style="--h:57%"><span>57%</span></div>
+            <div class="bar" style="--h:50%"><span>50%</span></div>
+            <div class="bar" style="--h:47%"><span>47%</span></div>
+            <div class="bar" style="--h:40%"><span>40%</span></div>
           </div>
-          <h3>Principales barreras de acceso</h3>
           <ul class="stat-legend">
-            <li><span class="dot dot-1"></span>Info difícil de encontrar (57%)</li>
-            <li><span class="dot dot-2"></span>Reciben info rara vez (50%)</li>
-            <li><span class="dot dot-3"></span>Desconocen fuentes (47%)</li>
-            <li><span class="dot dot-4"></span>Difusión insuficiente (40%)</li>
+            <li><span class="dot" style="background:#06b6d4"></span>Info difícil de encontrar (57%)</li>
+            <li><span class="dot" style="background:#3b8fe8"></span>Reciben info rara vez (50%)</li>
+            <li><span class="dot" style="background:#1e6cbf"></span>Desconocen fuentes (47%)</li>
+            <li><span class="dot" style="background:#0f3460"></span>Difusión insuficiente (40%)</li>
           </ul>
         </div>
+
         <div class="stat-card">
+          <h3>Funcionalidades más solicitadas</h3>
           <div class="stat-donut-wrap">
             <svg viewBox="0 0 120 120" class="donut-svg">
-              <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="18"/>
-              <circle cx="60" cy="60" r="50" fill="none" stroke="#4fc3f7" stroke-width="18" stroke-dasharray="198 116" stroke-dashoffset="25" class="donut-seg seg1"/>
-              <circle cx="60" cy="60" r="50" fill="none" stroke="#29b6f6" stroke-width="18" stroke-dasharray="73 241" stroke-dashoffset="-173" class="donut-seg seg2"/>
-              <circle cx="60" cy="60" r="50" fill="none" stroke="#0288d1" stroke-width="18" stroke-dasharray="42 272" stroke-dashoffset="-246" class="donut-seg seg3"/>
-              <circle cx="60" cy="60" r="50" fill="none" stroke="#01579b" stroke-width="18" stroke-dasharray="31 283" stroke-dashoffset="-288" class="donut-seg seg4"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="18"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#06b6d4"  stroke-width="18" stroke-dasharray="126 188" stroke-dashoffset="25"   class="donut-seg"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#3b8fe8"  stroke-width="18" stroke-dasharray="73  241" stroke-dashoffset="-101"  class="donut-seg"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#1e6cbf"  stroke-width="18" stroke-dasharray="42  272" stroke-dashoffset="-174"  class="donut-seg"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#0f3460"  stroke-width="18" stroke-dasharray="73  241" stroke-dashoffset="-216"  class="donut-seg"/>
             </svg>
             <div class="donut-center"><strong>40%</strong><small>Laborales</small></div>
           </div>
-          <h3>Funcionalidades más solicitadas</h3>
           <ul class="stat-legend">
-            <li><span class="dot" style="background:#4fc3f7"></span>Ofertas laborales (40%)</li>
-            <li><span class="dot" style="background:#29b6f6"></span>Cursos educativos (23%)</li>
-            <li><span class="dot" style="background:#0288d1"></span>Programas sociales (13%)</li>
-            <li><span class="dot" style="background:#01579b"></span>Otros (24%)</li>
+            <li><span class="dot" style="background:#06b6d4"></span>Ofertas laborales (40%)</li>
+            <li><span class="dot" style="background:#3b8fe8"></span>Cursos educativos (23%)</li>
+            <li><span class="dot" style="background:#1e6cbf"></span>Programas sociales (13%)</li>
+            <li><span class="dot" style="background:#0f3460"></span>Otros (24%)</li>
           </ul>
         </div>
+
         <div class="stat-card stat-card-wide">
           <h3>Aceptación de la plataforma digital</h3>
           <div class="acceptance-bars">
             <div class="acc-item">
-              <span>Una plataforma facilitaría el acceso</span>
-              <div class="acc-bar-wrap"><div class="acc-bar" style="--w:100%">100%</div></div>
+              <span>Una plataforma facilitaría el acceso a información</span>
+              <div class="acc-bar-wrap"><div class="acc-bar" style="--w:100%"></div></div>
             </div>
             <div class="acc-item">
-              <span>Me interesaría usar una plataforma</span>
-              <div class="acc-bar-wrap"><div class="acc-bar" style="--w:96%">96%</div></div>
+              <span>Me interesaría usar una plataforma como esta</span>
+              <div class="acc-bar-wrap"><div class="acc-bar" style="--w:96%"></div></div>
             </div>
             <div class="acc-item">
               <span>Aumentaría mi participación comunitaria</span>
-              <div class="acc-bar-wrap"><div class="acc-bar" style="--w:90%">90%</div></div>
+              <div class="acc-bar-wrap"><div class="acc-bar" style="--w:90%"></div></div>
             </div>
             <div class="acc-item">
-              <span>La tecnología mejora el acceso a info</span>
-              <div class="acc-bar-wrap"><div class="acc-bar" style="--w:100%">100%</div></div>
+              <span>La tecnología mejora el acceso a oportunidades</span>
+              <div class="acc-bar-wrap"><div class="acc-bar" style="--w:100%"></div></div>
             </div>
           </div>
-          <p class="stat-note"><i class="fas fa-info-circle"></i> Fuente: Encuesta Google Form aplicada a 30 habitantes del barrio Restrepo. Proyecto UNAD 2026.</p>
+          <p class="stat-note">
+            <i class="fas fa-info-circle"></i>
+            Fuente: Encuesta Google Form · 30 habitantes del barrio Restrepo · Proyecto UNAD 2026
+          </p>
         </div>
+
       </div>
     </div>
   </section>
@@ -229,26 +263,46 @@
         <div class="contact-info">
           <div class="contact-item">
             <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div><strong>Ubicación</strong><span>Barrio Restrepo, Bogotá D.C., Colombia</span></div>
+            <div>
+              <strong>Ubicación</strong>
+              <span>Barrio Restrepo, Bogotá D.C., Colombia</span>
+            </div>
           </div>
           <div class="contact-item">
             <div class="contact-icon"><i class="fas fa-university"></i></div>
-            <div><strong>Proyecto académico</strong><span>Universidad Nacional Abierta y a Distancia – UNAD</span></div>
+            <div>
+              <strong>Proyecto académico</strong>
+              <span>Universidad Nacional Abierta y a Distancia – UNAD</span>
+            </div>
           </div>
           <div class="contact-item">
             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-            <div><strong>Contacto</strong><span>inforestrepo@unad.edu.co</span></div>
+            <div>
+              <strong>Contacto</strong>
+              <span>inforestrepo@unad.edu.co</span>
+            </div>
           </div>
           <div class="contact-item">
             <div class="contact-icon"><i class="fas fa-bullseye"></i></div>
-            <div><strong>ODS Alineado</strong><span>ODS 9 – Innovación e Infraestructura</span></div>
+            <div>
+              <strong>ODS Alineado</strong>
+              <span>ODS 9 – Innovación e Infraestructura</span>
+            </div>
           </div>
         </div>
+
         <form class="contact-form" onsubmit="submitContact(event)">
           <h3>Sugiere una oportunidad</h3>
-          <div class="form-group">
-            <label>Nombre completo</label>
-            <input type="text" placeholder="Tu nombre" required />
+          <p>Completa el formulario y el equipo revisará tu aporte</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label>Apellido</label>
+              <input type="text" placeholder="Tu apellido" required />
+            </div>
           </div>
           <div class="form-group">
             <label>Correo electrónico</label>
@@ -265,9 +319,11 @@
           </div>
           <div class="form-group">
             <label>Descripción de la oportunidad</label>
-            <textarea rows="4" placeholder="Describe brevemente la oportunidad..."></textarea>
+            <textarea rows="4" placeholder="Describe brevemente la oportunidad que quieres compartir..."></textarea>
           </div>
-          <button type="submit" class="btn-primary btn-full">Enviar sugerencia <i class="fas fa-paper-plane"></i></button>
+          <button type="submit" class="btn-primary btn-full">
+            Enviar sugerencia <i class="fas fa-paper-plane"></i>
+          </button>
         </form>
       </div>
     </div>
@@ -278,9 +334,14 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="nav-logo"><span class="logo-icon"><i class="fas fa-map-marked-alt"></i></span><span class="logo-text">Info<strong>Restrepo</strong></span></div>
-          <p>Plataforma de difusión de oportunidades educativas, laborales y sociales para la comunidad del barrio Restrepo, Bogotá.</p>
-          <div class="footer-ods"><span>ODS 9</span><i class="fas fa-industry"></i> Innovación e Infraestructura</div>
+          <div class="nav-logo">
+            <span class="logo-icon"><i class="fas fa-map-marked-alt"></i></span>
+            <span class="logo-text">Info<strong>Restrepo</strong></span>
+          </div>
+          <p>Plataforma de difusión de oportunidades educativas, laborales y sociales para la comunidad del barrio Restrepo, Bogotá D.C.</p>
+          <div class="footer-ods">
+            <i class="fas fa-industry"></i> ODS 9 – Innovación e Infraestructura
+          </div>
         </div>
         <div class="footer-col">
           <h4>Plataforma</h4>
@@ -288,6 +349,7 @@
             <li><a href="#oportunidades">Oportunidades</a></li>
             <li><a href="#categorias">Categorías</a></li>
             <li><a href="#estadisticas">Estadísticas</a></li>
+            <li><a href="#contacto">Contacto</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -296,6 +358,7 @@
             <li><a href="#">Sobre InfoRestrepo</a></li>
             <li><a href="#">Metodología CDIO</a></li>
             <li><a href="#">Equipo UNAD</a></li>
+            <li><a href="#">ODS 9</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -305,7 +368,7 @@
             <li>Edgar Giovanni Trujillo</li>
             <li>Wilson Andrés Romero Cajamarca</li>
           </ul>
-          <p class="footer-tutor">Mag. Orlando Gomez Barboza</p>
+          <p class="footer-tutor">Tutor: Mag. Orlando Gomez Barboza</p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -320,20 +383,33 @@
       <button class="modal-close" onclick="closeModal('loginModal')"><i class="fas fa-times"></i></button>
       <div class="modal-logo"><i class="fas fa-map-marked-alt"></i> Info<strong>Restrepo</strong></div>
       <h2>Iniciar sesión</h2>
-      <p class="modal-sub">Accede a tu cuenta para guardar oportunidades y recibir notificaciones</p>
+      <p class="modal-sub">Accede a tu cuenta para guardar oportunidades y recibir notificaciones personalizadas</p>
       <form onsubmit="handleLogin(event)">
         <div class="form-group">
           <label>Correo electrónico</label>
-          <div class="input-icon-wrap"><i class="fas fa-envelope"></i><input type="email" placeholder="tu@correo.com" required /></div>
+          <div class="input-icon-wrap">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="tu@correo.com" required />
+          </div>
         </div>
         <div class="form-group">
           <label>Contraseña</label>
-          <div class="input-icon-wrap"><i class="fas fa-lock"></i><input type="password" placeholder="••••••••" required /></div>
+          <div class="input-icon-wrap">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="••••••••" required />
+          </div>
         </div>
-        <div class="form-check"><label><input type="checkbox" /> Recordarme</label><a href="#">¿Olvidaste tu contraseña?</a></div>
-        <button type="submit" class="btn-primary btn-full">Ingresar <i class="fas fa-arrow-right"></i></button>
+        <div class="form-check">
+          <label><input type="checkbox" /> Recordarme</label>
+          <a href="#">¿Olvidaste tu contraseña?</a>
+        </div>
+        <button type="submit" class="btn-primary btn-full">
+          Ingresar <i class="fas fa-arrow-right"></i>
+        </button>
       </form>
-      <p class="modal-switch">¿No tienes cuenta? <a onclick="switchModal('loginModal','registerModal')">Regístrate aquí</a></p>
+      <p class="modal-switch">
+        ¿No tienes cuenta? <a onclick="switchModal('loginModal','registerModal')">Regístrate aquí</a>
+      </p>
     </div>
   </div>
 
@@ -343,7 +419,7 @@
       <button class="modal-close" onclick="closeModal('registerModal')"><i class="fas fa-times"></i></button>
       <div class="modal-logo"><i class="fas fa-map-marked-alt"></i> Info<strong>Restrepo</strong></div>
       <h2>Crear cuenta</h2>
-      <p class="modal-sub">Únete a la comunidad InfoRestrepo y accede a todas las oportunidades</p>
+      <p class="modal-sub">Únete a InfoRestrepo y accede a todas las oportunidades de tu comunidad</p>
       <form onsubmit="handleRegister(event)">
         <div class="form-row">
           <div class="form-group">
@@ -357,24 +433,39 @@
         </div>
         <div class="form-group">
           <label>Correo electrónico</label>
-          <div class="input-icon-wrap"><i class="fas fa-envelope"></i><input type="email" placeholder="tu@correo.com" required /></div>
+          <div class="input-icon-wrap">
+            <i class="fas fa-envelope"></i>
+            <input type="email" placeholder="tu@correo.com" required />
+          </div>
         </div>
         <div class="form-group">
           <label>Teléfono (opcional)</label>
-          <div class="input-icon-wrap"><i class="fas fa-phone"></i><input type="tel" placeholder="300 000 0000" /></div>
+          <div class="input-icon-wrap">
+            <i class="fas fa-phone"></i>
+            <input type="tel" placeholder="300 000 0000" />
+          </div>
         </div>
         <div class="form-group">
           <label>Contraseña</label>
-          <div class="input-icon-wrap"><i class="fas fa-lock"></i><input type="password" placeholder="Mínimo 8 caracteres" required /></div>
+          <div class="input-icon-wrap">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Mínimo 8 caracteres" required />
+          </div>
         </div>
-        <div class="form-check"><label><input type="checkbox" required /> Acepto los términos y condiciones de uso</label></div>
-        <button type="submit" class="btn-primary btn-full">Crear cuenta <i class="fas fa-user-plus"></i></button>
+        <div class="form-check">
+          <label><input type="checkbox" required /> Acepto los términos y condiciones</label>
+        </div>
+        <button type="submit" class="btn-primary btn-full">
+          Crear cuenta <i class="fas fa-user-plus"></i>
+        </button>
       </form>
-      <p class="modal-switch">¿Ya tienes cuenta? <a onclick="switchModal('registerModal','loginModal')">Inicia sesión</a></p>
+      <p class="modal-switch">
+        ¿Ya tienes cuenta? <a onclick="switchModal('registerModal','loginModal')">Inicia sesión</a>
+      </p>
     </div>
   </div>
 
-  <!-- ========== MODAL DETALLE OPORTUNIDAD ========== -->
+  <!-- ========== MODAL DETALLE ========== -->
   <div class="modal-overlay" id="detailModal" onclick="closeModalOutside(event,'detailModal')">
     <div class="modal modal-detail">
       <button class="modal-close" onclick="closeModal('detailModal')"><i class="fas fa-times"></i></button>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InfoRestrepo – Oportunidades para tu comunidad</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#inicio" class="nav-logo">
+        <span class="logo-icon"><i class="fas fa-map-marked-alt"></i></span>
+        <span class="logo-text">Info<strong>Restrepo</strong></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+        <li><a href="#oportunidades" class="nav-link">Oportunidades</a></li>
+        <li><a href="#categorias" class="nav-link">Categorías</a></li>
+        <li><a href="#estadisticas" class="nav-link">Estadísticas</a></li>
+        <li><a href="#contacto" class="nav-link">Contacto</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-outline" onclick="openModal('loginModal')">Iniciar sesión</button>
+        <button class="btn-primary" onclick="openModal('registerModal')">Registrarse</button>
+      </div>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="inicio">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge"><i class="fas fa-map-pin"></i> Barrio Restrepo · Bogotá D.C.</div>
+      <h1 class="hero-title">Encuentra oportunidades<br/><span class="highlight">para crecer</span> en tu comunidad</h1>
+      <p class="hero-subtitle">InfoRestrepo centraliza convocatorias educativas, ofertas laborales y programas sociales para que ninguna oportunidad pase desapercibida en tu barrio.</p>
+      <div class="search-bar">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="heroSearch" placeholder="Busca empleo, cursos, programas sociales..." oninput="searchOpportunities(this.value)" />
+        <button class="search-btn" onclick="searchOpportunities(document.getElementById('heroSearch').value)">Buscar</button>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><strong id="totalOps">0</strong><span>Oportunidades</span></div>
+        <div class="hstat-divider"></div>
+        <div class="hstat"><strong>4</strong><span>Categorías</span></div>
+        <div class="hstat-divider"></div>
+        <div class="hstat"><strong>100%</strong><span>Gratuito</span></div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-card-float card-float-1">
+        <i class="fas fa-briefcase"></i>
+        <div><strong>Nueva oferta</strong><small>Operario de bodega</small></div>
+      </div>
+      <div class="hero-card-float card-float-2">
+        <i class="fas fa-graduation-cap"></i>
+        <div><strong>Curso gratis</strong><small>Excel básico SENA</small></div>
+      </div>
+      <div class="hero-card-float card-float-3">
+        <i class="fas fa-hands-helping"></i>
+        <div><strong>Subsidio</strong><small>Familias en Acción</small></div>
+      </div>
+      <div class="hero-illustration">
+        <div class="ill-circle"></div>
+        <div class="ill-map"><i class="fas fa-city"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CATEGORÍAS ========== -->
+  <section class="section" id="categorias">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Explora por área</span>
+        <h2>¿Qué estás buscando?</h2>
+        <p>Selecciona una categoría para filtrar las oportunidades disponibles</p>
+      </div>
+      <div class="categories-grid">
+        <div class="category-card active" onclick="filterCategory('todos')" data-cat="todos">
+          <div class="cat-icon cat-all"><i class="fas fa-th-large"></i></div>
+          <h3>Todas</h3>
+          <p>Ver todo el contenido disponible</p>
+          <span class="cat-count" id="count-todos">0</span>
+        </div>
+        <div class="category-card" onclick="filterCategory('laboral')" data-cat="laboral">
+          <div class="cat-icon cat-work"><i class="fas fa-briefcase"></i></div>
+          <h3>Ofertas Laborales</h3>
+          <p>Empleos y oportunidades de trabajo en la zona</p>
+          <span class="cat-count" id="count-laboral">0</span>
+        </div>
+        <div class="category-card" onclick="filterCategory('educacion')" data-cat="educacion">
+          <div class="cat-icon cat-edu"><i class="fas fa-graduation-cap"></i></div>
+          <h3>Cursos Educativos</h3>
+          <p>Formación, capacitaciones y talleres gratuitos</p>
+          <span class="cat-count" id="count-educacion">0</span>
+        </div>
+        <div class="category-card" onclick="filterCategory('social')" data-cat="social">
+          <div class="cat-icon cat-social"><i class="fas fa-hands-helping"></i></div>
+          <h3>Programas Sociales</h3>
+          <p>Subsidios, apoyos y beneficios del Estado</p>
+          <span class="cat-count" id="count-social">0</span>
+        </div>
+        <div class="category-card" onclick="filterCategory('convocatoria')" data-cat="convocatoria">
+          <div class="cat-icon cat-conv"><i class="fas fa-bullhorn"></i></div>
+          <h3>Convocatorias</h3>
+          <p>Becas, concursos y llamados comunitarios</p>
+          <span class="cat-count" id="count-convocatoria">0</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OPORTUNIDADES ========== -->
+  <section class="section section-alt" id="oportunidades">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Información actualizada</span>
+        <h2>Oportunidades disponibles</h2>
+        <p>Encuentra la información que necesitas para avanzar</p>
+      </div>
+      <div class="filter-bar">
+        <input type="text" id="searchInput" placeholder="Buscar oportunidades..." oninput="searchOpportunities(this.value)" />
+        <select id="sortSelect" onchange="sortOpportunities(this.value)">
+          <option value="reciente">Más recientes</option>
+          <option value="nombre">Por nombre</option>
+          <option value="categoria">Por categoría</option>
+        </select>
+      </div>
+      <div id="noResults" class="no-results hidden">
+        <i class="fas fa-search"></i>
+        <p>No se encontraron oportunidades con ese criterio.</p>
+        <button onclick="resetFilters()">Ver todas</button>
+      </div>
+      <div class="opps-grid" id="oppsGrid"></div>
+    </div>
+  </section>
+
+  <!-- ========== ESTADÍSTICAS ========== -->
+  <section class="section stats-section" id="estadisticas">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag tag-light">Diagnóstico comunitario</span>
+        <h2>¿Por qué nació InfoRestrepo?</h2>
+        <p>Datos reales obtenidos de encuesta aplicada a 30 habitantes del barrio Restrepo, Bogotá</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-chart">
+            <div class="bar-chart">
+              <div class="bar" style="--h:57%" data-val="57%"><span>57%</span></div>
+              <div class="bar" style="--h:50%" data-val="50%"><span>50%</span></div>
+              <div class="bar" style="--h:47%" data-val="47%"><span>47%</span></div>
+              <div class="bar" style="--h:40%" data-val="40%"><span>40%</span></div>
+            </div>
+          </div>
+          <h3>Principales barreras de acceso</h3>
+          <ul class="stat-legend">
+            <li><span class="dot dot-1"></span>Info difícil de encontrar (57%)</li>
+            <li><span class="dot dot-2"></span>Reciben info rara vez (50%)</li>
+            <li><span class="dot dot-3"></span>Desconocen fuentes (47%)</li>
+            <li><span class="dot dot-4"></span>Difusión insuficiente (40%)</li>
+          </ul>
+        </div>
+        <div class="stat-card">
+          <div class="stat-donut-wrap">
+            <svg viewBox="0 0 120 120" class="donut-svg">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="18"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#4fc3f7" stroke-width="18" stroke-dasharray="198 116" stroke-dashoffset="25" class="donut-seg seg1"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#29b6f6" stroke-width="18" stroke-dasharray="73 241" stroke-dashoffset="-173" class="donut-seg seg2"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#0288d1" stroke-width="18" stroke-dasharray="42 272" stroke-dashoffset="-246" class="donut-seg seg3"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#01579b" stroke-width="18" stroke-dasharray="31 283" stroke-dashoffset="-288" class="donut-seg seg4"/>
+            </svg>
+            <div class="donut-center"><strong>40%</strong><small>Laborales</small></div>
+          </div>
+          <h3>Funcionalidades más solicitadas</h3>
+          <ul class="stat-legend">
+            <li><span class="dot" style="background:#4fc3f7"></span>Ofertas laborales (40%)</li>
+            <li><span class="dot" style="background:#29b6f6"></span>Cursos educativos (23%)</li>
+            <li><span class="dot" style="background:#0288d1"></span>Programas sociales (13%)</li>
+            <li><span class="dot" style="background:#01579b"></span>Otros (24%)</li>
+          </ul>
+        </div>
+        <div class="stat-card stat-card-wide">
+          <h3>Aceptación de la plataforma digital</h3>
+          <div class="acceptance-bars">
+            <div class="acc-item">
+              <span>Una plataforma facilitaría el acceso</span>
+              <div class="acc-bar-wrap"><div class="acc-bar" style="--w:100%">100%</div></div>
+            </div>
+            <div class="acc-item">
+              <span>Me interesaría usar una plataforma</span>
+              <div class="acc-bar-wrap"><div class="acc-bar" style="--w:96%">96%</div></div>
+            </div>
+            <div class="acc-item">
+              <span>Aumentaría mi participación comunitaria</span>
+              <div class="acc-bar-wrap"><div class="acc-bar" style="--w:90%">90%</div></div>
+            </div>
+            <div class="acc-item">
+              <span>La tecnología mejora el acceso a info</span>
+              <div class="acc-bar-wrap"><div class="acc-bar" style="--w:100%">100%</div></div>
+            </div>
+          </div>
+          <p class="stat-note"><i class="fas fa-info-circle"></i> Fuente: Encuesta Google Form aplicada a 30 habitantes del barrio Restrepo. Proyecto UNAD 2026.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACTO ========== -->
+  <section class="section" id="contacto">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">¿Tienes información?</span>
+        <h2>Publica o sugiere una oportunidad</h2>
+        <p>Ayuda a tu comunidad compartiendo convocatorias, empleos o programas que conozcas</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div><strong>Ubicación</strong><span>Barrio Restrepo, Bogotá D.C., Colombia</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-university"></i></div>
+            <div><strong>Proyecto académico</strong><span>Universidad Nacional Abierta y a Distancia – UNAD</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div><strong>Contacto</strong><span>inforestrepo@unad.edu.co</span></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-bullseye"></i></div>
+            <div><strong>ODS Alineado</strong><span>ODS 9 – Innovación e Infraestructura</span></div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="submitContact(event)">
+          <h3>Sugiere una oportunidad</h3>
+          <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" placeholder="Tu nombre" required />
+          </div>
+          <div class="form-group">
+            <label>Correo electrónico</label>
+            <input type="email" placeholder="tu@correo.com" required />
+          </div>
+          <div class="form-group">
+            <label>Categoría</label>
+            <select>
+              <option>Oferta Laboral</option>
+              <option>Curso Educativo</option>
+              <option>Programa Social</option>
+              <option>Convocatoria</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Descripción de la oportunidad</label>
+            <textarea rows="4" placeholder="Describe brevemente la oportunidad..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full">Enviar sugerencia <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo"><span class="logo-icon"><i class="fas fa-map-marked-alt"></i></span><span class="logo-text">Info<strong>Restrepo</strong></span></div>
+          <p>Plataforma de difusión de oportunidades educativas, laborales y sociales para la comunidad del barrio Restrepo, Bogotá.</p>
+          <div class="footer-ods"><span>ODS 9</span><i class="fas fa-industry"></i> Innovación e Infraestructura</div>
+        </div>
+        <div class="footer-col">
+          <h4>Plataforma</h4>
+          <ul>
+            <li><a href="#oportunidades">Oportunidades</a></li>
+            <li><a href="#categorias">Categorías</a></li>
+            <li><a href="#estadisticas">Estadísticas</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Proyecto</h4>
+          <ul>
+            <li><a href="#">Sobre InfoRestrepo</a></li>
+            <li><a href="#">Metodología CDIO</a></li>
+            <li><a href="#">Equipo UNAD</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Integrantes</h4>
+          <ul>
+            <li>Dyland Farid Gutiérrez Parra</li>
+            <li>Edgar Giovanni Trujillo</li>
+            <li>Wilson Andrés Romero Cajamarca</li>
+          </ul>
+          <p class="footer-tutor">Mag. Orlando Gomez Barboza</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 InfoRestrepo · UNAD · Escuela de Ciencias Básicas, Tecnología e Ingeniería · Proyecto de Grado</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== MODAL LOGIN ========== -->
+  <div class="modal-overlay" id="loginModal" onclick="closeModalOutside(event,'loginModal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('loginModal')"><i class="fas fa-times"></i></button>
+      <div class="modal-logo"><i class="fas fa-map-marked-alt"></i> Info<strong>Restrepo</strong></div>
+      <h2>Iniciar sesión</h2>
+      <p class="modal-sub">Accede a tu cuenta para guardar oportunidades y recibir notificaciones</p>
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <div class="input-icon-wrap"><i class="fas fa-envelope"></i><input type="email" placeholder="tu@correo.com" required /></div>
+        </div>
+        <div class="form-group">
+          <label>Contraseña</label>
+          <div class="input-icon-wrap"><i class="fas fa-lock"></i><input type="password" placeholder="••••••••" required /></div>
+        </div>
+        <div class="form-check"><label><input type="checkbox" /> Recordarme</label><a href="#">¿Olvidaste tu contraseña?</a></div>
+        <button type="submit" class="btn-primary btn-full">Ingresar <i class="fas fa-arrow-right"></i></button>
+      </form>
+      <p class="modal-switch">¿No tienes cuenta? <a onclick="switchModal('loginModal','registerModal')">Regístrate aquí</a></p>
+    </div>
+  </div>
+
+  <!-- ========== MODAL REGISTRO ========== -->
+  <div class="modal-overlay" id="registerModal" onclick="closeModalOutside(event,'registerModal')">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('registerModal')"><i class="fas fa-times"></i></button>
+      <div class="modal-logo"><i class="fas fa-map-marked-alt"></i> Info<strong>Restrepo</strong></div>
+      <h2>Crear cuenta</h2>
+      <p class="modal-sub">Únete a la comunidad InfoRestrepo y accede a todas las oportunidades</p>
+      <form onsubmit="handleRegister(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" placeholder="Tu nombre" required />
+          </div>
+          <div class="form-group">
+            <label>Apellido</label>
+            <input type="text" placeholder="Tu apellido" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <div class="input-icon-wrap"><i class="fas fa-envelope"></i><input type="email" placeholder="tu@correo.com" required /></div>
+        </div>
+        <div class="form-group">
+          <label>Teléfono (opcional)</label>
+          <div class="input-icon-wrap"><i class="fas fa-phone"></i><input type="tel" placeholder="300 000 0000" /></div>
+        </div>
+        <div class="form-group">
+          <label>Contraseña</label>
+          <div class="input-icon-wrap"><i class="fas fa-lock"></i><input type="password" placeholder="Mínimo 8 caracteres" required /></div>
+        </div>
+        <div class="form-check"><label><input type="checkbox" required /> Acepto los términos y condiciones de uso</label></div>
+        <button type="submit" class="btn-primary btn-full">Crear cuenta <i class="fas fa-user-plus"></i></button>
+      </form>
+      <p class="modal-switch">¿Ya tienes cuenta? <a onclick="switchModal('registerModal','loginModal')">Inicia sesión</a></p>
+    </div>
+  </div>
+
+  <!-- ========== MODAL DETALLE OPORTUNIDAD ========== -->
+  <div class="modal-overlay" id="detailModal" onclick="closeModalOutside(event,'detailModal')">
+    <div class="modal modal-detail">
+      <button class="modal-close" onclick="closeModal('detailModal')"><i class="fas fa-times"></i></button>
+      <div id="detailContent"></div>
+    </div>
+  </div>
+
+  <!-- ========== TOAST ========== -->
+  <div class="toast" id="toast"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
